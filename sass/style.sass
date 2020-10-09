@@ -1,0 +1,178 @@
+@charset "UTF-8"
+
+@import '_options'
+@import '_defaults'
+
+body
+    display: flex
+    justify-content: center
+    align-items: center
+    width: 100vw
+    height: 100vh
+    background: linear-gradient(to bottom, #3d9784, #ffffff, #3d9784)
+
+.container
+    width: 85%
+    margin: 0 auto
+
+.settings, .test
+    display: flex
+    justify-content: center 
+    text-align: center
+    flex-wrap: wrap
+
+.test
+    display: none
+    flex-direction: column
+    width: 80%
+    margin: 0 auto
+    & div + div
+        margin-top: 20px
+    & div
+        height: 80px
+        vertical-align: middle
+        display: flex
+        justify-content: center
+        align-items: center
+
+@include grid(settings, 20, 0, nowrap, 3, 20) 
+
+.settings__grid
+    width: 100%
+    &-col
+        & + &
+            & .item__form                
+                & > *
+                    padding: 10px
+                    width: 45%
+                    margin: 0 auto
+                    display: flex
+                    justify-content: space-between
+                    position: relative
+
+
+label
+    width: 80%
+    margin-left: 5px
+
+.item
+    &__title
+        display: flex
+        align-items: center
+        justify-content: center
+        text-transform: uppercase
+        padding: 10px 0
+        background: linear-gradient(to bottom right, #1fcca6, #3d9784)
+        border-radius: 5px 5px 0 0
+        height: 238px
+        cursor: pointer
+        transition-duration: 3s
+        &:active
+            background: linear-gradient(to bottom right, #3d9784, #1fcca6)
+    &__form
+        display: none
+        flex-direction: column
+        justify-content: space-evenly
+        background:  linear-gradient(to bottom right,#1fcca775, #3d978375)
+        height: 200px
+        border-bottom: 2px solid #3d9784
+        transition-duration: 3s
+        & > *
+            position: relative
+        &-firstname_input, &-lastname_input
+            width: 80%
+            padding: 5px 10px
+            &::placeholder
+                color: #3d9783b0
+            &:focus::placeholder
+                color: transparent
+
+.button
+    width: 125px
+    height: 35px
+    margin: 10px
+    padding: 5px 10px
+    background: linear-gradient(to bottom right, #1fcca6, #3d9784)
+    &:active
+        background: linear-gradient(to bottom right, #3d9784, #1fcca6)
+    &_begin
+        margin-top: 80px
+    &_getAnswer, &_skipQuestion
+        margin: 0 0 0 40px
+
+.radio, .checkbox
+    display: none
+    & + label
+        text-align: left
+        padding-left: 35px
+    & + label:before
+        content: ""
+        position: absolute
+        top: 10px
+        left: 10px
+        height: 16px
+        width: 16px
+        border-radius: 50%
+        border: 2px solid #3d9784
+    &:checked + label:before
+        background-color: #3d9784
+            
+    // & *
+    //     opacity: 0
+
+
+.rules
+    display: none
+    justify-content: center
+    align-items: center
+    margin: 0 auto
+    flex-direction: column
+    padding: 40px 30px
+    width: 60%
+    background:  linear-gradient(to bottom right,#1fcca775, #3d978375)
+    position: relative
+    &__title
+        display: flex
+        justify-content: center
+        align-items: center
+        position: absolute
+        top: 0
+        left: 0
+        height: 60px
+        width: 100%
+        text-transform: uppercase
+        font-weight: bolder
+        background: linear-gradient(to bottom right, #1fcca6, #3d9784)
+    &__text
+        margin-top: 20px
+
+.startTest
+    margin-top: 40px
+
+.displFlex
+    display: flex
+
+.heightAuto
+    height: auto
+
+.list
+    &__rules
+        text-align: justify
+        margin-top: 40px
+    &__item + &__item
+        margin-top: 15px
+
+.answer
+    padding: 5px 10px
+    height: 35px
+    &::placeholder
+        color: #3d9783b0
+    &:focus::placeholder
+        color: transparent
+
+.question, .hint, .timer, .userAnswer
+    background:  linear-gradient(to bottom right,#1fcca775, #3d978375)
+    border: 2px solid  #3d9784
+
+.question, .comment
+    font-size: 20px

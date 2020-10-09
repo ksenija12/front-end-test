@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ksenija Filatova - Front-end Test</title>
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+
+<div class="container">
+    <div class="settings">
+        <div class="settings__grid">
+            <div class="settings__grid-col">
+                <div class="settings__grid-item">
+                    <div class="item__title">Ваши данные</div>
+                    <div class="item__form">
+                        <div class="item__form-firstname">
+                            <input type="text" class="item__form-firstname_input" placeholder="ваше имя">
+                        </div>
+                        <div class="item__form-lastname">
+                            <input type="text" class="item__form-lastname_input" placeholder="ваша фамилия">
+                        </div>
+                    </div>
+                </div>
+            </div><div class="settings__grid-col">
+                <div class="settings__grid-item">
+                    <div class="item__title">Предмет тестирования</div>
+                    <div class="item__form">
+                        <div class="test__html">
+                            <input type="checkbox" class="checkbox" name="html" id="html" checked>
+                            <label for="html">HTML</label>
+                        </div>
+                        <div class="test__css">
+                            <input type="checkbox" class="checkbox" name="css" id="css">
+                            <label for="css">CSS</label>
+                        </div>
+                        <div class="test__js">
+                            <input type="checkbox" class="checkbox" name="js" id="js">
+                            <label for="js">JS</label>
+                        </div>                        
+                    </div>
+                </div>
+            </div><div class="settings__grid-col">
+                <div class="settings__grid-item">
+                    <div class="item__title">Уровень сложности</div>
+                    <div class="item__form">
+                        <div class="item__form-first">
+                            <input type="radio" class="radio" name="level" id="first" data-count="0" checked>
+                            <label for="first">Легкий</label>
+                        </div>                        
+                        <div class="item__form-second">
+                            <input type="radio" class="radio" name="level" id="second" data-count="1">
+                            <label for="second">Средний</label>
+                        </div>                        
+                        <div class="item__form-third">
+                            <input type="radio" class="radio" name="level" id="third" data-count="2">
+                            <label for="third">Сложный</label>
+                        </div>                        
+                    </div>
+                </div>
+            </div>
+        </div>
+        <button class="button button_begin">Перейти к тесту</button>
+    </div>
+
+    <div class="rules">
+        <div class="rules__title">Инструкция</div>
+        <div class="rules__text">
+            <ol class="list__rules">
+                <li class="list__item">Количество вопросов в тесте зависит от разделов, выбранных на начальной форме</li>
+                <li class="list__item">Подсказки в тесте зависят от уровня сложности, выбранного на начальной форме (легкий уровень - у каждого вопроса есть варианты ответов; средний уровень - у аждого вопроса указано количество букв в ответе и есть ответ скрытый *, который открывает буквы с течением времени; сложный уровень - подсказки отсутствуют)</li>
+                <li class="list__item">На каждый вопрос дается 60с; есть неограниченное количество возможностей ввести правильный овет до истичении времени; при введении правильного ответа, появляется следующий вопрос</li>
+                <li class="list__item">Подтвердить ответ можно с помощью копки "ОК" либо клавиши "Enter"</li>
+                <li class="list__item">Пропустить вопрос можно с помощью копки "Пропустить" либо клавиши "Esc"</li>
+                <li class="list__item">По окончанию теста будет выведен % правильных ответов</li>
+                <li class="list__item">Чтоб начать тест, жми на кнопку. Удачи!</li>
+            </ol>
+        </div>
+        <button class="button startTest">Начать тест</button>
+    </div>
+
+    <div class="test">
+        <div class="question"></div>
+        <div class="hint"></div>
+        <div class="timer"></div>
+        <div class="userAnswer">
+            <input type="text" class="answer" placeholder="ваш ответ">
+            <button class="button button_getAnswer">Ок</button>
+            <button class="button button_skipQuestion">Пропустить</button>
+        </div>
+        
+        <div class="comment"></div>
+    </div>
+</div>
+
+
+
+    
+    
+    <script src="./js/questions-html.js"></script>
+    <script src="./js/questions-css.js"></script>
+    <script src="./js/questions-js.js"></script>
+    <script src="./js/main.js"></script>
+</body>
+</html>
