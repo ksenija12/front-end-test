@@ -93,9 +93,6 @@ body {
 .test div {
   height: 80px;
   vertical-align: middle;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
@@ -263,12 +260,15 @@ label {
   left: 10px;
   height: 16px;
   width: 16px;
-  border-radius: 50%;
   border: 2px solid #3d9784;
 }
 
 .radio:checked + label:before, .checkbox:checked + label:before {
   background-color: #3d9784;
+}
+
+.radio + label:before {
+  border-radius: 50%;
 }
 
 .rules {
@@ -380,6 +380,16 @@ label {
   background: -webkit-gradient(linear, left top, right bottom, from(#1fcca775), to(#3d978375));
   background: linear-gradient(to bottom right, #1fcca775, #3d978375);
   border: 2px solid  #3d9784;
+}
+
+.question, .timer, .userAnswer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.hint {
+  display: none;
 }
 
 .question, .comment {
