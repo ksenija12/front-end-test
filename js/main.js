@@ -13,7 +13,7 @@ const itemTitle = document.querySelectorAll('.item__title');
 itemTitle.forEach(function(el) {
     el.addEventListener('click', function(event) {
         event.currentTarget.closest('.settings__grid-item').querySelector('.item__form').classList.toggle('displFlex');
-        event.currentTarget.classList.toggle('heightAuto')
+        event.currentTarget.classList.toggle('heightAuto');
     })
 })
 
@@ -24,7 +24,20 @@ let level
 begin.addEventListener("click", function(event) {
     const checkbox = document.querySelectorAll('[type="checkbox"]');
     const radio = document.querySelectorAll('[type="radio"]');
-   
+
+    if (!document.querySelector('.item__form-firstname_input').value) {
+        alert('В ваших данных не хватает имени');
+    } else if (!document.querySelector('.item__form-lastname_input').value) {
+        alert('В ваших данных не хватает фамилии');
+    } else if (document.querySelectorAll('[type="checkbox"]:checked').length == 0) {
+        alert('Выберите предмет тестирования');
+    } else if (document.querySelectorAll('[type="radio"]:checked').length == 0) {
+        alert('Выберите уровень сложности');
+    } else {
+        document.querySelector('.settings').style.display = "none";
+        document.querySelector('.rules').style.display = "flex";
+    }
+
     checkbox.forEach(function(el) {
         if (el.checked) {
             if (el.getAttribute('id') == 'html'){
@@ -39,24 +52,15 @@ begin.addEventListener("click", function(event) {
     })
 
     radio.forEach(function(el) {
-        if (el.checked)  return level = +el.getAttribute('data-count')
+        if (el.checked)  return level = +el.getAttribute('data-count');
     })
 
-    if (!document.querySelector('.item__form-firstname_input').value) {
-        alert('В ваших данных не хватает имени')
-    } else if (!document.querySelector('.item__form-lastname_input').value) {
-        alert('В ваших данных не хватает фамилии')
-    } else {
-        document.querySelector('.settings').style.display = "none"
-        document.querySelector('.rules').style.display = "flex"
-    }
-    
 })
 
 
 startTest.addEventListener('click', function(event) {
-    document.querySelector('.test').style.display = "flex"
-    document.querySelector('.rules').style.display = "none"
+    document.querySelector('.test').style.display = "flex";
+    document.querySelector('.rules').style.display = "none";
     const game = {
         questions: quest,
         default: {
@@ -92,6 +96,7 @@ startTest.addEventListener('click', function(event) {
 
             
             const check = answer.toLowerCase() == this.currentQuest.answer.toLowerCase();
+            
 
             if (check) {
                 this.stopTick(this.stepTimerId);
@@ -103,6 +108,7 @@ startTest.addEventListener('click', function(event) {
                 comment.innerText = 'Подумай еще';
                 document.querySelector(".answer").value = "";
             }
+
         },
         scoreInc: function() {
             this.score++;
@@ -130,7 +136,6 @@ startTest.addEventListener('click', function(event) {
 
             
                 if ((that.gameMode == 0) || (that.gameMode == 1)) {
-
                 
                     if (that.counter % that.default.hintTime == 0 && that.counter > 0) {
                         document.querySelector('.hint').innerText =  that.getHint() 
@@ -159,6 +164,10 @@ startTest.addEventListener('click', function(event) {
             }
             // console.clear();
             this.currentQuest = this.getRandomQuestion();
+            if ((this.gameMode == 0) || (this.gameMode == 1)) {
+                
+                document.querySelector('.hint').style.display = "flex";
+            }
             this.genHintTime();
 
 
@@ -168,7 +177,8 @@ startTest.addEventListener('click', function(event) {
 
         },
         getHint: function() {
-            if (this.gameMode == 0) {
+            if (this.gameMode == 0) {                
+                
                 let hint = []
                 for (let key in this.currentQuest) {
                     if ((key == 'a') || (key == 'b') || (key == 'c')) {    
